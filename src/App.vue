@@ -2,15 +2,15 @@
   <div class="app">
     <header class="header">
       <nav>
-        <RouterLink to="/" class="nav-button">Home</RouterLink>
-        <RouterLink to="/about" class="nav-button">About</RouterLink>
+        <RouterLink to="/login" class="nav-button">Login</RouterLink>
+        <RouterLink to="/cadastrar" class="nav-button">Cadastrar</RouterLink>
       </nav>
     </header>
 
     <main class="main-content">
       <div class="centered-div">
         <p class="centered-text">
-          We’re farmers, purveyors, and eaters of organically grown food.
+          Aqui você monta a playlist do seu jeito!
         </p>
       </div>
       <!-- Outro conteúdo principal aqui -->
