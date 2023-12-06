@@ -27,7 +27,7 @@ body {
   margin: 0;
   padding: 0;
   background-image: url('./assets/background.jpg');
-  background-color: lightgray;
+  background-color: #f9f9f952;
   background-size: auto;  
   background-repeat: repeat;
   background-position: 0 0;
@@ -37,6 +37,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+
 }
 
 .header {
@@ -101,5 +102,6 @@ body {
   line-height: 1.2;
   letter-spacing: -0.02em;
   margin: 0;
+  background-color: #f9f9f952;
 }
 </style>

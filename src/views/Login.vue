@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="login-container">
       <h2>Login</h2>
       <form @submit.prevent="handleSubmit">
         <div>
@@ -39,6 +39,14 @@
   
   <style scoped>
   /* Estilos do componente */
+  .login-container {
+  max-width: 300px;
+  margin: auto;
+  padding: 20px;
+  border: 3px solid #9E4784; /* Adicionando uma borda */
+  background-color: #f9f9f952; /* Adicionando um fundo mais claro */
+  border-radius: 8px;
+    }
   h2 {
     font-size: 24px;
     margin-bottom: 10px;
@@ -66,6 +74,9 @@
     padding: 8px;
     font-size: 16px;
     color: #FFF;
+    border-radius: 8px;
+    border-color:  #9E4784;
+
   }
 
   .nav-button {
@@ -75,6 +86,7 @@
   color: #FFFFFF;
   text-decoration: none;
   margin-left: 10px;
+  border-color:  #9E4784;
     }
 
 .nav-button:hover {
