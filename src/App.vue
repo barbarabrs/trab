@@ -13,7 +13,7 @@
           Aqui você monta a playlist do seu jeito!
         </p>
       </div>
-      <!-- Outro conteúdo principal aqui -->
+      
       <RouterView />
     </main>
   </div>
@@ -72,7 +72,7 @@ body {
 
 .main-content {
   flex: 1;
-  padding-top: 110px; /* Adapte conforme necessário */
+  padding-top: 110px; 
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -105,3 +105,4 @@ body {
   background-color: #f9f9f952;
 }
 </style>
+

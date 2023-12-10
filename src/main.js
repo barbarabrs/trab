@@ -1,23 +1,16 @@
 import { createApp } from 'vue';
 import App from './App.vue';
 import router from './router';
+import { createI18n } from 'vue-i18n'; // Verifique se está importando corretamente o createI18n
 
-import { configure } from 'vee-validate';
-import { required, email, minLength, sameAs } from '@vuelidate/validators';
-import { createI18n } from 'vue-i18n';
+// ... seu código ...
 
-configure({
-  generateMessage: ({ field, rule }) => {
-    return `O campo ${field} não é válido para a regra ${rule}.`;
-  },
-});
-
+const app = createApp(App);
+app.use(router);
 const i18n = createI18n({
   legacy: false,
   locale: 'en-US',
 });
+app.use(i18n);
 
-const app = createApp(App)
-  .use(router)
-  .use(i18n)
-  .mount('#app');
+app.mount('#app');

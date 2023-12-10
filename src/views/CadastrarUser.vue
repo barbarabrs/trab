@@ -4,23 +4,23 @@
       <form @submit.prevent="handleFormSubmit">
         <div>
           <label for="username">Usuário:</label>
-          <input v-model="state.username" name="username" type="text" />
-          <span>{{ v$?.username?.$error }}</span>
+          <input v-model="state.username" id="username" type="text" />
+          
         </div>
         <div>
           <label for="password">Senha:</label>
           <input v-model="state.password" name="password" type="password" />
-          <span>{{ v$?.password?.$error }}</span>
+          
         </div>
         <div>
           <label for="confirmPassword">Confirmar senha:</label>
           <input v-model="state.confirmPassword" name="confirmPassword" type="password" />
-          <span>{{ v$?.confirmPassword?.$error }}</span>
+          
         </div>
         <div>
           <label for="email">Email:</label>
           <input v-model="state.email" name="email" type="email" />
-          <span>{{ v$?.email?.$error }}</span>
+          
         </div>
         <div>
           <button type="submit" class="nav-button">Cadastrar</button>
@@ -54,10 +54,27 @@
       const v$ = useVuelidate(rules, state);
   
       const handleFormSubmit = () => {
-        if (v$?.value.$invalid) {
+        Object.keys(v$.value).forEach((key) => {
+          if (v$.value[key] !== null && v$.value[key] !== undefined && v$.value[key].$model !== undefined) {
+            v$.value[key].$dirty = true;
+          }
+      });
+        if (!v$?.value.$invalid) {
+          console.log('Campos inválidos:', v$?.value);
+
+          Object.keys(v$?.value).forEach((fieldName) => {
+            if (fieldName !== '$invalid') {
+                console.log(`${fieldName} - erros:`, v$?.value[fieldName]?.$error);
+            }
+            });
+            console.log('Usuário:', state.value.username);
+            console.log('Senha:', state.value.password);
+            console.log('Confirmar senha:', state.value.confirmPassword);
+            console.log('Email:', state.value.email);
           alert('Por favor, preencha corretamente todos os campos.');
           return;
         }
+
   
         // Lógica para envio dos dados ou outras ações
   
