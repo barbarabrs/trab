@@ -3,15 +3,16 @@
       <h2>Login</h2>
       <form @submit.prevent="handleSubmit">
         <div>
-          <label for="username" style="color: #fff;">Usuário:</label>
+          <label for="username" style="color: #fff;" v-if="!this.username">Usuário:</label>
           <input type="text" id="username" v-model="username" />
+          <p v-if="errorMessage" class="error-message">{{ errorMessage }}</p>
         </div>
         <div>
           <label for="password" style="color: #fff">Senha:</label>
           <input type="password" id="password" v-model="password" />
         </div>
         <div>
-          <button type="submit" class="nav-button">Login</button>
+          <RouterLink to="/areaLogada" type="submit" class="nav-button">Login</RouterLink>
         </div>
       </form>
     </div>
@@ -22,16 +23,21 @@
     data() {
       return {
         username: '',
-        password: ''
+        password: '',      
+        errorMessage: 'Mensagem de erro aqui',
       };
     },
     methods: {
       handleSubmit() {
-        // Lógica de autenticação ou envio de dados
+        
         console.log('Usuário:', this.username);
         console.log('Senha:', this.password);
-        // Aqui você pode adicionar lógica para autenticar o usuário
-        // por meio de uma chamada a uma API, por exemplo
+        if(!this.username){
+          alert('Por favor, insira um usuário válido.')
+        }
+        if(!this.password || this.password.length<4){
+          alert('Por favor, insira uma senha válida.')
+        }
       }
     }
   };
@@ -94,6 +100,9 @@
   color: #9E4784;
   transition: background-color 0.3s, color 0.3s;
 }
-
+.error-message {
+  color: red;
+  font-weight: bold;
+}
   </style>
   

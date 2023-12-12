@@ -85,7 +85,8 @@ body {
   justify-content: center;
   align-items: center;
   gap: 48px;
-  color: #000000;
+  color: #9E4784;
+  background-color: #f9f9f952;
 }
 
 .centered-text {
@@ -102,7 +103,7 @@ body {
   line-height: 1.2;
   letter-spacing: -0.02em;
   margin: 0;
-  background-color: #f9f9f952;
+  
 }
 </style>
 

@@ -59,11 +59,11 @@
             v$.value[key].$dirty = true;
           }
       });
-        if (!v$?.value.$invalid) {
+        if (v$?.value.$invalid) {
           console.log('Campos inválidos:', v$?.value);
 
           Object.keys(v$?.value).forEach((fieldName) => {
-            if (fieldName !== '$invalid') {
+            if (fieldName == '$invalid') {
                 console.log(`${fieldName} - erros:`, v$?.value[fieldName]?.$error);
             }
             });
