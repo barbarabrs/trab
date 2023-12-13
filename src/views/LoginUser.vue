@@ -1,3 +1,4 @@
+
 <template>
     <div class="login-container">
       <h2>Login</h2>
@@ -5,43 +6,58 @@
         <div>
           <label for="username" style="color: #fff;" v-if="!this.username">Usuário:</label>
           <input type="text" id="username" v-model="username" />
-          <p v-if="errorMessage" class="error-message">{{ errorMessage }}</p>
+          
         </div>
         <div>
           <label for="password" style="color: #fff">Senha:</label>
           <input type="password" id="password" v-model="password" />
         </div>
         <div>
-          <RouterLink to="/areaLogada" type="submit" class="nav-button">Login</RouterLink>
+          <button type="submit" class="nav-button">Login</button>
         </div>
       </form>
     </div>
   </template>
+
   
-  <script>
-  export default {
-    data() {
-      return {
-        username: '',
-        password: '',      
-        errorMessage: 'Mensagem de erro aqui',
-      };
-    },
-    methods: {
-      handleSubmit() {
+<script>
+import axios from 'axios'; // Importe o Axios
+
+export default {
+  data() {
+    return {
+      username: '',
+      password: '',      
+      errorMessage: null, 
+    };
+  },
+  methods: {
+    async handleSubmit() {
+      try {
+        const response = await axios.post('http://localhost:3000/loginUser', {
+          email: this.email,
+          password: this.password
+        });
         
-        console.log('Usuário:', this.username);
-        console.log('Senha:', this.password);
-        if(!this.username){
-          alert('Por favor, insira um usuário válido.')
-        }
-        if(!this.password || this.password.length<4){
-          alert('Por favor, insira uma senha válida.')
+        const token = response.data.token;
+        localStorage.setItem('token', token);
+        
+        this.$router.push('/areaLogada');
+      } catch (error) {
+        if (error.response) {
+          this.errorMessage = error.response.data;
+        } else if (error.request) {
+          console.error(error.request);
+        } else {
+          console.error('Erro', error.message);
         }
       }
     }
-  };
-  </script>
+  }
+};
+</script>
+
+ 
   
   <style scoped>
   /* Estilos do componente */

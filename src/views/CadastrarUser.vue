@@ -33,6 +33,7 @@
   import { defineComponent, ref } from 'vue';
   import { useVuelidate } from '@vuelidate/core';
   import { required, email, minLength, sameAs } from '@vuelidate/validators';
+  import axios from 'axios'; // Importe o Axios
   
   export default defineComponent({
     
@@ -48,46 +49,40 @@
         username: { required },
         password: { required, minLength: minLength(4) },
         confirmPassword: { required, sameAs: sameAs(() => state.value.password) },
-        email: { required, email }
+        email: { required, email },
       };
-  
       const v$ = useVuelidate(rules, state);
-  
-      const handleFormSubmit = () => {
-        Object.keys(v$.value).forEach((key) => {
-          if (v$.value[key] !== null && v$.value[key] !== undefined && v$.value[key].$model !== undefined) {
-            v$.value[key].$dirty = true;
-          }
-      });
-        if (v$?.value.$invalid) {
-          console.log('Campos inválidos:', v$?.value);
+      const handleFormSubmit = async () => {
+        try {
+          const response = await axios.post('http://localhost:3000/cadastrarUser', {
+            username: state.value.username,
+            password: state.value.password,
+            confirmPassword: state.value.confirmPassword,
+            email: state.value.email,
+            
 
-          Object.keys(v$?.value).forEach((fieldName) => {
-            if (fieldName == '$invalid') {
-                console.log(`${fieldName} - erros:`, v$?.value[fieldName]?.$error);
-            }
-            });
-            console.log('Usuário:', state.value.username);
-            console.log('Senha:', state.value.password);
-            console.log('Confirmar senha:', state.value.confirmPassword);
-            console.log('Email:', state.value.email);
-          alert('Por favor, preencha corretamente todos os campos.');
-          return;
+            
+            
+          });
+
+          console.log(state.value.password);
+          console.log(state.value.confirmPassword);
+
+          console.log('Resposta do servidor:', response.data);
+          // Tratar a resposta do servidor conforme necessário, redirecionar, mostrar mensagem, etc.
+        } catch (error) {
+          console.error('Erro ao enviar dados:', error);
+          // Tratar erros aqui, exibir mensagens de erro, etc.
         }
-
-  
-        // Lógica para envio dos dados ou outras ações
-  
-        console.log('Dados do formulário:', state.value);
-      };
-  
-      return { state, v$, handleFormSubmit };
+      };  
+    return { state, v$, handleFormSubmit };
     }
+    
   });
   </script>
   
   <style scoped>
-  /* Estilos do componente */
+  
   .cadastrar-container {
     max-width: 300px;
     margin: auto;
