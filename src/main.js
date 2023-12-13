@@ -3,7 +3,6 @@ import App from './App.vue';
 import router from './router';
 import { createI18n } from 'vue-i18n'; // Verifique se está importando corretamente o createI18n
 
-// ... seu código ...
 
 const app = createApp(App);
 app.use(router);

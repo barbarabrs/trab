@@ -4,29 +4,28 @@
       <h2>Login</h2>
       <form @submit.prevent="handleSubmit">
         <div>
-          <label for="username" style="color: #fff;" v-if="!this.username">Usuário:</label>
-          <input type="text" id="username" v-model="username" />
-          
-        </div>
+          <label for="email" style="color: #fff;">E-mail:</label>
+          <input type="text" id="email" v-model="email" />
+                  </div>
         <div>
-          <label for="password" style="color: #fff">Senha:</label>
+          <label for="password" style="color: #fff;">Senha:</label>
           <input type="password" id="password" v-model="password" />
         </div>
         <div>
           <button type="submit" class="nav-button">Login</button>
         </div>
+<p v-if="errorMessage" class="error-message">{{ errorMessage }}</p>
       </form>
     </div>
   </template>
 
-  
-<script>
-import axios from 'axios'; // Importe o Axios
+  <script>
+import axios from 'axios';
 
 export default {
   data() {
     return {
-      username: '',
+      email: '',
       password: '',      
       errorMessage: null, 
     };
@@ -36,11 +35,12 @@ export default {
       try {
         const response = await axios.post('http://localhost:3000/loginUser', {
           email: this.email,
-          password: this.password
+          password: this.password,
         });
         
         const token = response.data.token;
         localStorage.setItem('token', token);
+        
         
         this.$router.push('/areaLogada');
       } catch (error) {
@@ -52,8 +52,8 @@ export default {
           console.error('Erro', error.message);
         }
       }
-    }
-  }
+    },
+    },
 };
 </script>
 

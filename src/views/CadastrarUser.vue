@@ -39,7 +39,7 @@
     
     setup() {
       const state = ref({
-        username: '',
+        username: null,
         password: '',
         confirmPassword: '',
         email: ''
@@ -52,26 +52,40 @@
         email: { required, email },
       };
       const v$ = useVuelidate(rules, state);
+      
       const handleFormSubmit = async () => {
         try {
-          const response = await axios.post('http://localhost:3000/cadastrarUser', {
+
+          if(!state.value.username || !state.value.password || !state.value.confirmPassword || !state.value.email){
+            alert('Por favor, preencha todos os campos.');
+            return;
+
+          }
+          if(state.value.password.length < 4){
+            alert('A senha deve ter no mínimo 4 dígitos');
+            return;
+          }
+          const response = await axios.post('http://localhost:3000/cadastrarUser', {   
+
+      
             username: state.value.username,
             password: state.value.password,
             confirmPassword: state.value.confirmPassword,
-            email: state.value.email,
+            email: state.value.email,                 
             
-
-            
-            
-          });
+          }        
+          );
+          
 
           console.log(state.value.password);
           console.log(state.value.confirmPassword);
 
           console.log('Resposta do servidor:', response.data);
-          // Tratar a resposta do servidor conforme necessário, redirecionar, mostrar mensagem, etc.
+          alert(response.data);
+          
         } catch (error) {
           console.error('Erro ao enviar dados:', error);
+          alert(error.response.data);
           // Tratar erros aqui, exibir mensagens de erro, etc.
         }
       };  

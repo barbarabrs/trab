@@ -24,9 +24,19 @@ const router = createRouter({
     {
       path: '/areaLogada',
       name: 'areaLogada',
-     
+
       component: () => import('../views/AreaLogada.vue')
-    }
+      //beforeEnter: (to, from, next) => {
+        //verificaToken(to, from, next);
+     
+      //}
+    },
+    {
+      path: '/editarUser',
+      name: 'editarUser',
+      component: () => import('../views/EditarUser.vue')
+    },
+
   ]
 })
 

@@ -10,5 +10,65 @@
     "username": "asdd",
     "email": "teste@tst.com",
     "password": "$2b$10$57s8r4AnE45VssKXa/xVNegSocYAtJeS6E9GpKOJ57.hSF0wAqiqC"
+  },
+  {
+    "id": 3,
+    "username": "asd",
+    "email": "asd@teste.com",
+    "password": "$2b$10$0eaOD0qSWsPxnizvtsO8k.q32dSH8SWb.3zm6z1QHt4NKeiTO3ws."
+  },
+  {
+    "id": 4,
+    "username": "asd",
+    "email": "asd@teste.co",
+    "password": "$2b$10$DWYfBtRpBp1yPqWlp5MvS.31oNf9RG9ZnY.6LKovn2BhBBOPHaxWq"
+  },
+  {
+    "id": 5,
+    "username": "",
+    "email": "1234@teste.com",
+    "password": "$2b$10$le25dbFGy6qMy9MvohtCMedEPl24rYYNUGMxKfpoibJBNToN2VixO"
+  },
+  {
+    "id": 6,
+    "username": "",
+    "email": "abc@teste.com",
+    "password": "$2b$10$IcfjKUrv/vpD1fWz1MQyCOzWrjzjsGBzKWeOY4Gbh20Z979kFxp9m"
+  },
+  {
+    "id": 7,
+    "username": "a",
+    "email": "",
+    "password": "$2b$10$/a3jmx5UKxlpLQQwt.2T9.Hvorgxez.KMoihP8Mg9iefM0XbUf3Bu"
+  },
+  {
+    "id": 8,
+    "username": "a",
+    "email": "jaum@teste.com.br",
+    "password": "$2b$10$B2QE88OS8/rIUj.ykXQMT.IsbJQ9aHfTBTdFmjQQmHRmsypl./2WC"
+  },
+  {
+    "id": 9,
+    "username": "a",
+    "email": "jaum@teste.com.b",
+    "password": "$2b$10$7uwvVoSpfbZ.xPeyGNfOPelVCPhKPTXRY52.agvJZjnu.hTrmO.YS"
+  },
+  {
+    "id": 10,
+    "username": "abc",
+    "email": "jaum@teste.com",
+    "password": "$2b$10$RnAmYOvTyr/Ag6sj6L9bsucOLJHXzz1zxn8pF7yeTLgQHA93/5d2e"
+  },
+  {
+    "id": 11,
+    "username": "abc",
+    "email": "teste@tst.br",
+    "password": "$2b$10$1GaMJoLevvi8JI.P7/Jhreysb6IDt18xCH2VaD1GDwHqqLiszxMhq"
+  },
+  {
+    "id": 12,
+    "username": "1",
+    "email": "asdf@kem.c",
+    "password": "$2b$10$opkUChutMCZqOg.mYYdrjOHMCAJEF2XDnHE0QjCIs23h1ecHmC9LO"
   }
 ]
